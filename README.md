@@ -1,2 +1,2 @@
 # js-challenge-for-Devansh0309
-Go to Settings->Pages->Click on link in top portion to visit website or you can clone using code->copy https or ssh link for cloning.
+Go to code->clone using https or ssh copied link. You can view the code on your editor like vs code and can view the website by right clicking on users.html file and click on open with live server.
