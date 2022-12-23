@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">Users</h1>
+        <form class="row g-3 form">
+            <div class="col-md-4">
+              <label for="firstNameInput" class="form-label">First name</label>
+              <input type="text" class="form-control" id="firstNameInput" value=""  placeholder="Enter atleast 3 characters" oninput="isValid(this,'firstNameValid','firstNameInvalid')">
+              <div class="valid-feedback firstNameValid">
+                Looks good!
+              </div>
+              <div class="invalid-feedback firstNameInvalid">
+                Please enter correct first name
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="lastNameInput" class="form-label">Last name</label>
+              <input type="text" class="form-control" id="lastNameInput" value=""  placeholder="Enter atleast 3 characters"  oninput="isValid(this,'lastNameValid','lastNameInvalid')">
+              <div class="valid-feedback lastNameValid">
+                Looks good!
+              </div>
+              <div class="invalid-feedback lastNameInvalid">
+                Please enter correct last name
+              </div>
+            </div>
+            <div class="col-md-4">
+                <label for="userNameInput" class="form-label">UserName</label>
+                <input type="text" class="form-control" id="userNameInput" value=""  placeholder="Only . & alphanumeric characters"   oninput="isValid(this,'userNameValid','userNameInvalid')">
+                <div class="valid-feedback userNameValid">
+                  Looks good!
+                </div>
+                <div class="invalid-feedback userNameInvalid">
+                Please enter correct user name
+                </div>
+            </div>
+            <div class="col-md-6">
+              <label for="emailInput" class="form-label">Email</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend" style="background-color: rgb(254, 182, 153);">@</span>
+                <input type='text' class="form-control" id="emailInput" aria-describedby="inputGroupPrepend"  oninput="isValid(this,'','emailInvalid')">
+                <div class="invalid-feedback emailInvalid">
+                  Please enter correct email.
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="phoneNo.Input" class="form-label">Phone No.</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend" style="background-color: rgb(254, 182, 153);">+91</span>
+                <input type="text" class="form-control" id="phoneNo.Input" aria-describedby="inputGroupPrepend"  placeholder="Enter ddd-ddd-dddd e.g. 024-648-3804" onkeyup="isValid(this,'phoneValid','phoneInvalid')">
+                <div class="valid-feedback phoneValid">
+                  Looks Ok.
+                </div>
+                <div class="invalid-feedback phoneInvalid">
+                  Please enter correct phone no.
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="addressInput" class="form-label">Address</label>
+              <input type="text" class="form-control" id="addressInput"  onkeyup="isValid(this,'addressValid','addressInvalid')" >
+              <div class="valid-feedback addressValid">
+                Looks Good.
+              </div>
+              <div class="invalid-feedback addressInvalid">
+                Please provide a valid address.
+              </div>
+            </div>
+            <div class="col-md-3">
+                <label for="websiteInput" class="form-label">Website</label>
+                <input type="url" class="form-control" id="websiteInput" value="">
+            </div>
+            <div class="col-md-3">
+              <label for="companyInput" class="form-label">Company</label>
+              <input type="text" class="form-control" id="companyInput" value="">
+            </div>
+            <!-- <div class="col-md-3">
+              <label for="companyInput" class="form-label">Company Name</label>
+              <select class="form-select" id="companyInput">
+                <option selected disabled value="">Choose Company</option>
+                <option value="Microsoft">Microsoft</option>
+                <option value="Google">Google</option>
+                <option value="Apple">Apple</option>
+                <option value="Amazon">Amazon</option>
+                <option value="Flipkart">Flipkart</option>
+                <option value="Other">Other</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid company.
+              </div>
+            </div> -->
+            
+            <div class="col-12">
+              <button class="submbtn" type="button" onclick="isValid('','submitBtnClicked','')">Submit</button>
+            </div>
+          </form>
+    </div>
+    <br>
+    <table class="table table-striped form-table table-bordered">
+      <thead>
+        <tr class="">
+          <th>Sr No.</th>
+          <th>Name</th>
+          <th>UserName</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Phone</th>
+          <th>Website</th>
+          <th>Company Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+      </tbody>
+    </table>
+      <script src="fetch.js"></script>
+      <!-- <script src="tableData.js"></script> -->
+      <script>window.addEventListener('onload',fetchData())</script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+      <script src="isValid.js"></script>
+      
+</body>
+</html>
