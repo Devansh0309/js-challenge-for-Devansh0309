@@ -1,8 +1,14 @@
 async function fetchData(){
+    try{
         fetch('https://jsonplaceholder.typicode.com/users')
-        .then(result => {console.log('a');return result.json()})
+        .then(result => {
+            if(!result || result.status!=200){
+                console.log('Something went wrong while fetching the users.')
+                return []
+            }
+            return result.json()})
         .then(resultData=>{
-            // console.log(resultData[0].address);
+            console.log(resultData);
             for(let i=0;i<resultData.length;i++){
                 let row=document.createElement('tr')
                 row.classList.add('table-striped', 'newRow')
@@ -28,7 +34,6 @@ async function fetchData(){
                 document.getElementsByClassName('form-table')[0].tBodies[0].appendChild(row)
         }
         return resultData.length
-        // localStorage.setItem('tableData',JSON.stringify(formData))
     })
     .then((len)=>{
         for(let i=0;i<formData.length;i++){
@@ -55,5 +60,31 @@ async function fetchData(){
             row.append(srData,nameData,userNameData,emailData,addressData,phoneData,websiteData,companyData)
             document.getElementsByClassName('form-table')[0].tBodies[0].appendChild(row)
         }
+    }).catch(error=> {
+        console.log("Something went wrong while fetching the users.",error)
+        for(let i=0;i<formData.length;i++){
+            let row=document.createElement('tr')
+            row.classList.add('table-striped', 'newRow')
+            let srData=document.createElement('td')
+            let nameData=document.createElement('td')
+            let userNameData=document.createElement('td')
+            let emailData=document.createElement('td')
+            let addressData=document.createElement('td')
+            let phoneData=document.createElement('td')
+            let websiteData=document.createElement('td')
+            let companyData=document.createElement('td')
+            srData.innerText=formData[i].sr
+            nameData.innerText=formData[i].name
+            userNameData.innerText=formData[i].username
+            emailData.innerText=formData[i].email
+            addressData.innerText=formData[i].address
+            phoneData.innerText=formData[i].phone
+            websiteData.innerText=formData[i].website
+            companyData.innerText=formData[i].company
+        
+            row.append(srData,nameData,userNameData,emailData,addressData,phoneData,websiteData,companyData)
+            document.getElementsByClassName('form-table')[0].tBodies[0].appendChild(row)
+        }
     })
+    }finally{console.log('Completed')}
 }
